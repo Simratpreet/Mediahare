@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag "friends" %>
+<%= stylesheet_link_tag "x" %>
+<div style="position:fixed; top:100px; width:100%; height:100%;"> 
+<div class = "friends_div" id = "add_friends_div">
+  <h1>Add Friends</h1>
+  <% @non_friends.each do |nf|  %>
+  <p>
+    <%= nf.first_name %>
+    <%= link_to "Add Friend", friendships_path(friend_id: nf.id), method: :post %>
+  </p>
+  <% end %>
+</div>
+<div class = "friends_div" id = "current_friends_div">
+  <h2>Current friends</h2>
+  <% @friends.approved.each do |f| %>
+  <p>
+
+    <%= f.friend.first_name %>
+    <%= link_to "Remove Friend", f, :method => :delete %>
+  </p>
+  <% end %>
+  <% @inverse_friendships.approved.each do |f| %>
+  <p><%= f.user.first_name %>  
+  <%= link_to "Remove Friend", friendship_path(:id,:user_id), :method => :delete %>
+  </p>
+  <% end %>
+
+</div>
+
+<div class = "friends_div" id = "request_sent_div">
+  <h2>Request Sent</h2>
+  <% @friends.pending.each do |f| %>
+  <p>
+
+    <%= f.friend.first_name %>
+    
+  </p>
+  <% end %>
+</div>
+
+
+
+<div class = "friends_div" id = "pending_requests_div">
+  <h2>Pending Requests</h2>
+  <% @inverse_friendships.pending.each do |f| %>
+  <p>
+    <%= f.user.first_name %>
+    <%= link_to "Accept", accept_friendship_path(f) %>
+    <%= link_to "Reject", reject_friendship_path(f) %>
+  </p>
+  <% end %>
+</div>
+</div>
+

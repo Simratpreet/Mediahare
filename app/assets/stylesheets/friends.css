@@ -1,0 +1,31 @@
+.friends_div{
+
+	position: fixed;
+	width: 25%;
+	margin-top: 0px;
+}
+#add_friends_div{
+
+	left: 0%;
+}
+#current_friends_div{
+
+	left: 25%;
+}
+#request_sent_div{
+
+	left: 50%;
+}
+#pending_requests_div{
+
+	left: 75%;
+}
+.friends_div p{
+	color: rgb(3, 17, 29);
+	font-size: 14px;
+}
+.friends_div a{
+	color: blue;
+	font-size: 14px;
+	text-decoration: none;
+}
